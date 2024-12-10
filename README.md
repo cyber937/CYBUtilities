@@ -1,7 +1,7 @@
 # CYBUtilities
 This package allows to add useful swift language features.
 
-## -Array Extension
+## Array Extension
 #### rearrange(arrangingElements: [Element], at row: UInt) throws
 This Swift Array extension allows you to rearrange multiple elements within an array, moving them to a specified target position while maintaining the order of the moved elements. It is particularly useful for scenarios where you need precise control over the positioning of certain array elements without losing their original sequence.
 
