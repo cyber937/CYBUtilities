@@ -1,25 +1,41 @@
-import Testing
-@testable import CYBUtilities
+//
+//  CYBUtiltiesTest.swift
+//  CYBUtilities
+//
+//  Created by Kiyoshi Nagahama on 12/10/24.
+//
 
+import XCTest
+import CYBUtilities
 
-struct CYBUtilitiesTests {
-    
+final class CYBUtiltiesTest: XCTestCase {
+
     var testArray = [1,2,3,4,5]
-    
-    @Test mutating func array_rearrange() async throws {
+
+    func testArrayRearrange() throws {
         try testArray.rearrange(arrangingElements: [1,2,3], at: 5)
-        #expect(testArray == [4, 5, 1, 2, 3])
+        XCTAssertEqual(testArray, [4, 5, 1, 2, 3])
     }
-    
-    @Test  mutating func array_rearrange_targetRowOverNumberOfElement() async throws {
-        #expect(throws: CYBUtilError.targetRowIsOverNumberOfElement) {
+
+    func testArrayRearrangeTargetRowOverNumberOfElements() throws {
+        XCTAssertThrowsError(
             try testArray.rearrange(arrangingElements: [1,2,3], at: 6)
+        ) { error in
+            XCTAssertEqual(
+                error as? CYBUtilError,
+                .targetRowIsOverNumberOfElement
+            )
         }
     }
-    
-    @Test mutating func array_not_contains_arrangingElements() async throws {
-        #expect(throws: CYBUtilError.notContainsArrangingElements) {
+
+    func testArrayNotContainsArrangingElements() throws {
+        XCTAssertThrowsError(
             try testArray.rearrange(arrangingElements: [1,2,7], at: 4)
+        ) { error in
+            XCTAssertEqual(
+                error as? CYBUtilError,
+                .notContainsArrangingElements
+            )
         }
     }
 }
