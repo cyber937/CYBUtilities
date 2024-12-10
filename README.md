@@ -1,5 +1,5 @@
 # CYBUtilities
-This package allows to add swift useful language features.
+This package allows to add useful swift language features.
 
 ## Array Extension
 -rearrange(arrangingElements: [Element], at row: UInt) throws
